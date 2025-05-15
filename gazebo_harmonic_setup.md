@@ -83,6 +83,51 @@ commander disarm     # Disarm the motors
 param set SYS_AUTOSTART 4023  # Set the autostart to Phobos model
 ```
 
+## Example Flight Patterns
+
+### Running the Go and Stop Example
+
+To run the simple "Go and Stop" example which demonstrates basic drone control:
+
+1. Start the Gazebo Harmonic simulation:
+```bash
+make px4_sitl_default gz_phobos
+```
+
+2. In a separate terminal, run the Go and Stop example script:
+```bash
+python3 scripts/go_stop_example.py
+```
+
+This script will:
+- Take off the drone to a predefined altitude
+- Move forward for a specified distance
+- Hover in position
+- Return to the starting position
+- Land safely
+
+### Running the Figure 8 Pattern Example
+
+To run the Figure 8 trajectory example:
+
+1. Start the Gazebo Harmonic simulation:
+```bash
+make px4_sitl_default gz_phobos
+```
+
+2. In a separate terminal, run the Figure 8 example script:
+```bash
+python3 scripts/figure8_example.py
+```
+
+This script will:
+- Take off the drone to a specified altitude
+- Perform a figure 8 pattern using offboard control
+- Log position data during the flight
+- Return to the starting position and land
+
+You can adjust parameters such as the size of the figure 8 and flight speed by modifying the script.
+
 ## Troubleshooting
 
 ### Model Not Found
