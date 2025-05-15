@@ -2,10 +2,20 @@
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.134.0/containers/cpp
 {
 	"name": "px4-dev-nuttx",
-	"image": "px4io/px4-dev-nuttx-focal:2022-08-12",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"context": "."
+	},
 
-	"runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined" ],
-
+	"runArgs":  [
+		"--cap-add=SYS_PTRACE",
+		"--security-opt", "seccomp=unconfined",
+		"--net=host",
+		"--volume=/tmp/.X11-unix:/tmp/.X11-unix",
+		"--device=/dev/dri:/dev/dri",
+		"--group-add=video",
+		"--group-add=render"
+	],
 	// Set *default* container specific settings.json values on container create.
 	"settings": {
 		"terminal.integrated.shell.linux": "/bin/bash"
@@ -25,7 +35,7 @@
 		"ms-vscode.cmake-tools",
 		"ms-vscode.cpptools",
 		"ms-vscode.cpptools-extension-pack",
-		"redhat.vscode-yaml",
+		"redhat.vscode.yaml",
 		"streetsidesoftware.code-spell-checker",
 		"twxs.cmake",
 		"uavcan.dsdl",
@@ -36,7 +46,12 @@
 
 	"containerUser": "user",
 	"containerEnv": {
-		"LOCAL_USER_ID": "${localEnv:UID}"
+		"LOCAL_USER_ID": "${localEnv:UID}",
+		"DISPLAY": "${localEnv:DISPLAY}",
+		"QT_X11_NO_MITSHM": "1",
+		"PATH": "/usr/bin:${containerEnv:PATH}",
+		"GZ_SIM_SYSTEM_PLUGIN_PATH": "/usr/lib/x86_64-linux-gnu/gz-sim-7/plugins",
+		"GZ_SIM_RESOURCE_PATH": "/usr/share/gz/gz-sim7"
 	},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
