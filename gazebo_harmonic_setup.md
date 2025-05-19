@@ -96,7 +96,7 @@ make px4_sitl_default gz_phobos
 
 2. In a separate terminal, run the Go and Stop example script:
 ```bash
-python3 scripts/go_stop_example.py
+python3 go_and_stop.py
 ```
 
 This script will:
@@ -117,7 +117,7 @@ make px4_sitl_default gz_phobos
 
 2. In a separate terminal, run the Figure 8 example script:
 ```bash
-python3 scripts/figure8_example.py
+python3 figure8_example.py
 ```
 
 This script will:

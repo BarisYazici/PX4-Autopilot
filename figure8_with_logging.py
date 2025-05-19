@@ -182,7 +182,7 @@ async def monitor_actuator_output_status(drone):
 async def run():
     # Connect to the drone
     drone = System()
-    await drone.connect(system_address="udp://:14540")  # Simulator address
+    await drone.connect(system_address="udp://:14550")  # Simulator address
 
     # Wait for the drone to connect
     print("Waiting for drone to connect...")
